@@ -121,22 +121,22 @@ func makeAllMove(animals []Animal) {
 
 func main() {
 	fmt.Println("=== Go语言接口 ===")
-	
+
 	// 1. 基本接口使用
 	fmt.Println("\n1. 基本接口使用:")
-	
+
 	dog := Dog{Name: "旺财"}
 	cat := Cat{Name: "咪咪"}
-	
+
 	// 接口变量可以保存任何实现了该接口的类型
 	var speaker Speaker
-	
+
 	speaker = dog
 	fmt.Println(speaker.Speak())
-	
+
 	speaker = cat
 	fmt.Println(speaker.Speak())
-	
+
 	// 2. 多态演示
 	fmt.Println("\n2. 多态演示:")
 	speakers := []Speaker{
@@ -145,7 +145,7 @@ func main() {
 		Dog{Name: "大黑"},
 	}
 	makeAllSpeak(speakers)
-	
+
 	// 3. 多方法接口
 	fmt.Println("\n3. 多方法接口:")
 	animals := []Animal{
@@ -153,16 +153,16 @@ func main() {
 		Cat{Name: "小花"},
 	}
 	makeAllMove(animals)
-	
+
 	// 4. 接口组合
 	fmt.Println("\n4. 接口组合:")
 	human := Human{Name: "小明"}
-	
+
 	var athlete Athlete = human
 	fmt.Println(athlete.Walk())
 	fmt.Println(athlete.Run())
 	fmt.Println(athlete.Train())
-	
+
 	// 5. 空接口
 	fmt.Println("\n5. 空接口:")
 	describe(42)
@@ -170,74 +170,74 @@ func main() {
 	describe(3.14)
 	describe(Dog{Name: "Buddy"})
 	describe([]int{1, 2, 3})
-	
+
 	// 6. 类型断言
 	fmt.Println("\n6. 类型断言:")
 	var empty interface{}
-	
+
 	empty = "Go语言"
 	checkType(empty)
-	
+
 	empty = 42
 	checkType(empty)
-	
+
 	empty = Dog{Name: "Lucky"}
 	checkType(empty)
-	
+
 	empty = 3.14
 	checkType(empty)
-	
+
 	// 7. 安全的类型断言
 	fmt.Println("\n7. 安全的类型断言:")
 	var i interface{} = "hello"
-	
+
 	// 不安全的断言（如果类型不匹配会panic）
 	// s := i.(string)
-	
+
 	// 安全的断言
 	if s, ok := i.(string); ok {
 		fmt.Printf("成功断言为字符串: %s\n", s)
 	} else {
 		fmt.Println("断言失败")
 	}
-	
+
 	if n, ok := i.(int); ok {
 		fmt.Printf("成功断言为整数: %d\n", n)
 	} else {
 		fmt.Println("不是整数类型")
 	}
-	
+
 	// 8. 接口值和nil
 	fmt.Println("\n8. 接口值和nil:")
 	var speaker1 Speaker
 	printSpeaker(speaker1) // nil接口
-	
+
 	var speaker2 Speaker = Dog{Name: "Buddy"}
 	printSpeaker(speaker2) // 非nil接口
-	
+
 	// 9. 接口的动态类型和动态值
 	fmt.Println("\n9. 接口的内部结构:")
 	var a interface{}
 	fmt.Printf("空接口: 值=%v, 类型=%T\n", a, a)
-	
+
 	a = 42
 	fmt.Printf("赋值后: 值=%v, 类型=%T\n", a, a)
-	
+
 	a = "hello"
 	fmt.Printf("再次赋值: 值=%v, 类型=%T\n", a, a)
-	
+
 	// 10. 接口比较
 	fmt.Println("\n10. 接口比较:")
 	var s1, s2 Speaker
-	
+
 	s1 = Dog{Name: "A"}
 	s2 = Dog{Name: "A"}
-	
+
 	fmt.Printf("s1 == s2: %t\n", s1 == s2) // 相同类型和值，返回true
-	
+
 	s2 = Dog{Name: "B"}
 	fmt.Printf("s1 == s2: %t\n", s1 == s2) // 相同类型但不同值，返回false
-	
+
 	s2 = Cat{Name: "A"}
 	fmt.Printf("s1 == s2: %t\n", s1 == s2) // 不同类型，返回false
 }

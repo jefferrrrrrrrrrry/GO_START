@@ -78,16 +78,16 @@ func (p *Person) birthday() {
 
 func main() {
 	fmt.Println("=== Go语言函数 ===")
-	
+
 	// 1. 基本函数调用
 	fmt.Println("\n1. 基本函数:")
 	greet("小明")
-	
+
 	// 2. 带返回值的函数
 	fmt.Println("\n2. 带返回值的函数:")
 	result := add(5, 3)
 	fmt.Printf("5 + 3 = %d\n", result)
-	
+
 	// 3. 多返回值函数
 	fmt.Println("\n3. 多返回值函数:")
 	quotient, err := divide(10, 3)
@@ -96,60 +96,60 @@ func main() {
 	} else {
 		fmt.Printf("10 ÷ 3 = %.2f\n", quotient)
 	}
-	
+
 	// 处理除零错误
 	_, err = divide(10, 0)
 	if err != nil {
 		fmt.Printf("错误: %s\n", err)
 	}
-	
+
 	// 4. 命名返回值
 	fmt.Println("\n4. 命名返回值:")
 	area, perimeter := rectangle(5, 3)
 	fmt.Printf("矩形面积: %.1f, 周长: %.1f\n", area, perimeter)
-	
+
 	// 5. 可变参数函数
 	fmt.Println("\n5. 可变参数函数:")
 	fmt.Printf("sum(1,2,3) = %d\n", sum(1, 2, 3))
 	fmt.Printf("sum(1,2,3,4,5) = %d\n", sum(1, 2, 3, 4, 5))
-	
+
 	// 传递切片给可变参数函数
 	numbers := []int{1, 2, 3, 4, 5}
 	fmt.Printf("sum(切片) = %d\n", sum(numbers...))
-	
+
 	// 6. 高阶函数
 	fmt.Println("\n6. 高阶函数:")
 	multiply := func(a, b int) int { return a * b }
 	subtract := func(a, b int) int { return a - b }
-	
+
 	fmt.Printf("calculate(10, 5, multiply) = %d\n", calculate(10, 5, multiply))
 	fmt.Printf("calculate(10, 5, subtract) = %d\n", calculate(10, 5, subtract))
-	
+
 	// 7. 闭包
 	fmt.Println("\n7. 闭包:")
 	counter := makeCounter()
 	fmt.Printf("第1次调用counter: %d\n", counter())
 	fmt.Printf("第2次调用counter: %d\n", counter())
 	fmt.Printf("第3次调用counter: %d\n", counter())
-	
+
 	// 8. 递归函数
 	fmt.Println("\n8. 递归函数:")
 	fmt.Printf("5! = %d\n", factorial(5))
 	fmt.Printf("8! = %d\n", factorial(8))
-	
+
 	// 9. 方法
 	fmt.Println("\n9. 方法:")
 	person := Person{Name: "张三", Age: 25}
 	person.introduce()
 	person.birthday()
 	person.introduce()
-	
+
 	// 10. 匿名函数
 	fmt.Println("\n10. 匿名函数:")
 	func(message string) {
 		fmt.Printf("匿名函数说: %s\n", message)
 	}("你好，Go!")
-	
+
 	// 11. defer语句（延迟执行）
 	fmt.Println("\n11. defer语句:")
 	defer fmt.Println("这行会在main函数结束时执行")

@@ -50,7 +50,7 @@ func Factorial(n int) float64 {
 	if n == 0 || n == 1 {
 		return 1
 	}
-	
+
 	result := 1.0
 	for i := 2; i <= n; i++ {
 		result *= float64(i)
